@@ -10,7 +10,7 @@ abstract class Vehicles {
     this.YearOfManufacture = YearOfManufacture;
     this.TankCapacity = TankCapacity;
     this.AmountOfDoors = AmountOfDoors;
-    this.Horn = Horn
+    this.Horn = Horn;
   }
 }
 

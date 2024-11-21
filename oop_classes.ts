@@ -24,12 +24,16 @@ class Withdrawal extends BankAccount {
     constructor(AccountBalance: number, CardNumber: number, PinCode: number) {
         super(AccountBalance, CardNumber, PinCode)
     }
-    withdraw(withdrawing: number) {
+    withdraw(withdrawing: number, PinCode: number) {
         if(withdrawing < this.AccountBalance) {
-            this.AccountBalance -= withdrawing
-            return `Withdrew: ${withdrawing}. New Account Balance: ${this.AccountBalance}`
+            if(PinCode !== this.PinCode) {
+                return `Error, Wrong Pin Code`
+            } else {
+                this.AccountBalance -= withdrawing
+                return `Withdrew: ${withdrawing}. New Account Balance: ${this.AccountBalance}`
+            }
         } else {
-            return `Balance too low, no withdrawal possible`
+            return `You're freaking poor. Got no Money man, no withdrawal possible`
         } 
         
         
@@ -40,4 +44,4 @@ const transferMoney = new TransferBalance(0.1, 5351460180618829, 999)
 const withdrewMoney = new Withdrawal(0.1, 5351460180618829, 999)
 console.log(myAccount.getDetails())
 console.log(transferMoney.transfer(200))
-console.log(withdrewMoney.withdraw(0.01))
+console.log(withdrewMoney.withdraw(0.01, 999))
